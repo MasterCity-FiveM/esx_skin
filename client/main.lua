@@ -127,7 +127,7 @@ function OpenMenu(submitCb, cancelCb, restrict)
 end
 
 function CreateSkinCam()
-    if not DoesCamExist(cam) then
+    --[[if not DoesCamExist(cam) then
         cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
     end
 
@@ -138,17 +138,17 @@ function CreateSkinCam()
 
     isCameraActive = true
     SetCamRot(cam, 0.0, 0.0, 270.0, true)
-    SetEntityHeading(playerPed, 0.0)
+    SetEntityHeading(playerPed, 0.0)]]--
 end
 
 function DeleteSkinCam()
-    isCameraActive = false
+    --[[isCameraActive = false
     SetCamActive(cam, false)
     RenderScriptCams(false, true, 500, true, true)
-    cam = nil
+    cam = nil]]--
 end
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
 
@@ -202,7 +202,7 @@ Citizen.CreateThread(function()
             Citizen.Wait(500)
         end
     end
-end)
+end)]]--
 
 Citizen.CreateThread(function()
     local angle = 90
