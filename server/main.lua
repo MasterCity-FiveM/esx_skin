@@ -4,7 +4,8 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent('esx_skin:save')
 AddEventHandler('esx_skin:save', function(skin)
-	local xPlayer = ESX.GetPlayerFromId(source)
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
 	local defaultMaxWeight = ESX.GetConfig().MaxWeight
 	local backpackModifier = Config.BackpackWeight[skin.bags_1]
 
@@ -18,6 +19,8 @@ AddEventHandler('esx_skin:save', function(skin)
 		['@skin'] = json.encode(skin),
 		['@identifier'] = xPlayer.identifier
 	})
+	
+	TriggerClientEvent("esx_skin:saved", _source, skin)
 end)
 
 RegisterServerEvent('esx_skin:responseSaveSkin')
