@@ -58,7 +58,7 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 		cb(skin, jobSkin)
 	end)
 end)
-
+--[[
 ESX.RegisterCommand('skin', 'admin', function(xPlayer, args, showError)
 	xPlayer.triggerEvent('esx_skin:openSaveableMenu')
 end, false, {help = _U('skin')})
@@ -66,3 +66,4 @@ end, false, {help = _U('skin')})
 ESX.RegisterCommand('skinsave', 'admin', function(xPlayer, args, showError)
 	xPlayer.triggerEvent('esx_skin:requestSaveSkin')
 end, false, {help = _U('saveskin')})
+]]--
