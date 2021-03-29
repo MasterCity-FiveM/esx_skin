@@ -4,6 +4,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent('esx_skin:save')
 AddEventHandler('esx_skin:save', function(skin)
+	ESX.RunCustomFunction("anti_ddos", source, 'esx_skin:save', {skin = skin})
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local defaultMaxWeight = ESX.GetConfig().MaxWeight
@@ -25,6 +26,7 @@ end)
 
 RegisterServerEvent('esx_skin:responseSaveSkin')
 AddEventHandler('esx_skin:responseSaveSkin', function(skin)
+	ESX.RunCustomFunction("anti_ddos", source, 'esx_skin:responseSaveSkin', {skin = skin})
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	if xPlayer.getGroup() == 'admin' then
@@ -39,6 +41,7 @@ AddEventHandler('esx_skin:responseSaveSkin', function(skin)
 end)
 
 ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
+	ESX.RunCustomFunction("anti_ddos", source, 'esx_skin:getPlayerSkin', {})
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
